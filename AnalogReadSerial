@@ -1,3 +1,4 @@
+//requirements-ARDUINO UNO , 10k potentiometer , 3 pin dupoint cable (male to female)
 /*
   AnalogReadSerial
 
