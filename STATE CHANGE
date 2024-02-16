@@ -1,0 +1,58 @@
+/* 
+Steps:
+Attach a push button on breadboard and a wire from button's right leg to the negative row of breadboard then another wire from negative row to the digital GND 
+attach a resistor with its one leg in negative row of breadboard and other to a column in breadboard, then a led with its cathode(-ve) i.e its shorter leg in the column of the resistor in the breadboard
+Then a wire from anode(+ve) longer leg of led to the 13 pin digital . Then add a wire from button's top left leg to the digital pin  .
+*\
+
+
+// this constant won't change:
+const int buttonPin = 2;
+const int ledPin = 13;
+
+// Variables will change:
+
+int buttonState = 0;
+int lastButtonState = 0;
+int buttonPushCounter = 0;
+void setup() {
+  // initialize the button pin as a input:
+  pinMode (buttonPin, INPUT_PULLUP);
+  // initialize the LED as an output:
+  pinMode (ledPin, OUTPUT);
+
+}
+
+
+void loop() {
+  // read the pushbutton input pin:
+  buttonState = digitalRead(buttonPin);
+
+  //compare the buttonState to its previous state  
+  if (buttonState != lastButtonState) {
+    // if the state has changed, increment the counter
+    if (buttonState == LOW) {
+      // if the current state is LOW than the button
+      // wend from off to on:
+      buttonPushCounter++;
+
+      //Delay a little bit to avoid bouncing
+      delay(5);
+    }
+    // save the current state as the last state,
+    //for next time through the loop
+    lastButtonState = buttonState;
+
+
+    // turns on the LED every other button push button
+    // checking the modulo of the button push counter.
+    // the modulo function gives you the remainder of
+    // the division of two numbers:
+    if (buttonPushCounter % 2 == 0) {
+      digitalWrite (ledPin, HIGH);
+    } else {
+      digitalWrite (ledPin, LOW);
+    }
+  }
+}
+
