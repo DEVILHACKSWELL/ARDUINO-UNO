@@ -1,0 +1,68 @@
+int Led_Red = 9;
+int Led_Green = 10;
+int Led_Blue = 11;
+
+int val;
+
+void setup() {
+  // Initialize output pins for the LEDs
+  pinMode(Led_Red, OUTPUT);
+  pinMode(Led_Green, OUTPUT);
+  pinMode(Led_Blue, OUTPUT);
+}
+
+void loop()  //Main program loop
+{ // Digital test
+   // RED
+   digitalWrite(Led_Red, HIGH);  // LED is switched on
+   digitalWrite(Led_Green, LOW);
+   digitalWrite(Led_Blue, LOW);
+   delay(1000);  // Wait mode for 1 seconds
+   // GREEN
+   digitalWrite(Led_Red, LOW);
+   digitalWrite(Led_Green, HIGH);  // LED is switched on
+   digitalWrite(Led_Blue, LOW);
+   delay(1000);
+   // BLUE
+   digitalWrite(Led_Red, LOW);
+   digitalWrite(Led_Green, LOW);
+   digitalWrite(Led_Blue, HIGH);  // LED is switched on
+   delay(1000);
+   // Trun OFF
+   digitalWrite(Led_Red, LOW);
+   digitalWrite(Led_Green, LOW);
+   digitalWrite(Led_Blue, LOW);
+  
+  // Analog test
+   // RED ON
+   for (val = 0; val < 255; val++) {
+    analogWrite(Led_Red,val);
+    delay(2);
+   }
+   // RED OFF
+   for (val = 0; val < 255; val++) {
+    analogWrite(Led_Red,- val);
+    delay(2);
+   }
+   // BLUE ON
+   for (val = 0; val < 255; val++) {
+    analogWrite(Led_Blue,val);
+    delay(2);
+   }
+   // BLUE OFF
+   for (val = 0; val < 255; val++) {
+    analogWrite(Led_Blue,- val);
+    delay(2);
+   }
+   // GREEN ON
+   for (val = 0; val < 255; val++) {
+    analogWrite(Led_Green,val);
+    delay(2);
+   }
+    // GREEN OFF
+   for (val = 0; val < 255; val++) {
+    analogWrite(Led_Green,- val);
+    delay(2);
+   }
+   delay(500);
+}
