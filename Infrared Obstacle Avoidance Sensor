@@ -1,0 +1,21 @@
+int led = 13;
+int sen = 8;
+int detect;
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(led, OUTPUT);
+  pinMode(sen, INPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  detect = digitalRead(sen);
+  if(detect == 0)
+  {
+    digitalWrite(led, 1);
+  }
+  else if(detect == 1);
+  {
+    digitalWrite(led, 0);
+  }
+}
